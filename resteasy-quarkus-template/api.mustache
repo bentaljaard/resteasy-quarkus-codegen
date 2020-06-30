@@ -55,7 +55,10 @@ public class {{classname}}  {
 
     public Response {{nickname}}({{#isMultipart}}MultipartFormDataInput input,{{/isMultipart}}{{#allParams}}{{>queryParams}}{{>pathParams}}{{>headerParams}}{{>bodyParams}}{{^isMultipart}}{{>formParams}},{{/isMultipart}}{{#isMultipart}}{{^isFormParam}},{{/isFormParam}}{{/isMultipart}}{{/allParams}}@Context SecurityContext securityContext)
     throws NotFoundException {
-        return service.{{nickname}}({{#isMultipart}}input,{{/isMultipart}}{{#allParams}}{{^isMultipart}}{{paramName}},{{/isMultipart}}{{#isMultipart}}{{^isFormParam}}{{paramName}},{{/isFormParam}}{{/isMultipart}}{{/allParams}}securityContext);
+        //return service.{{nickname}}({{#isMultipart}}input,{{/isMultipart}}{{#allParams}}{{^isMultipart}}{{paramName}},{{/isMultipart}}{{#isMultipart}}{{^isFormParam}}{{paramName}},{{/isFormParam}}{{/isMultipart}}{{/allParams}}securityContext);
+        
+        {{^vendorExtensions.x-java-is-response-void}}return Response.ok().entity(service.{{nickname}}({{#isMultipart}}input,{{/isMultipart}}{{#allParams}}{{^isMultipart}}{{paramName}},{{/isMultipart}}{{#isMultipart}}{{^isFormParam}}{{paramName}},{{/isFormParam}}{{/isMultipart}}{{/allParams}}securityContext)).build();{{/vendorExtensions.x-java-is-response-void}}
+        {{#vendorExtensions.x-java-is-response-void}}return Response.ok().build();{{/vendorExtensions.x-java-is-response-void}}
     }
 {{/operation}}
 }

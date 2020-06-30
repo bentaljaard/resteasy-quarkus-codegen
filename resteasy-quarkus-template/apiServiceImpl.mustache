@@ -21,10 +21,11 @@ import javax.ws.rs.core.SecurityContext;
 {{#operations}}
 public class {{classname}}ServiceImpl implements {{classname}}Service {
   {{#operation}}
-      public Response {{nickname}}({{#isMultipart}}MultipartFormDataInput input,{{/isMultipart}}{{#allParams}}{{>serviceQueryParams}}{{>servicePathParams}}{{>serviceHeaderParams}}{{>serviceBodyParams}}{{^isMultipart}}{{>serviceFormParams}},{{/isMultipart}}{{#isMultipart}}{{^isFormParam}},{{/isFormParam}}{{/isMultipart}}{{/allParams}}SecurityContext securityContext)
+      public {{{returnType}}} {{nickname}}({{#isMultipart}}MultipartFormDataInput input,{{/isMultipart}}{{#allParams}}{{>serviceQueryParams}}{{>servicePathParams}}{{>serviceHeaderParams}}{{>serviceBodyParams}}{{^isMultipart}}{{>serviceFormParams}},{{/isMultipart}}{{#isMultipart}}{{^isFormParam}},{{/isFormParam}}{{/isMultipart}}{{/allParams}}SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
-      return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+      //return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+      {{^vendorExtensions.x-java-is-response-void}}return null;{{/vendorExtensions.x-java-is-response-void}}
   }
   {{/operation}}
 }

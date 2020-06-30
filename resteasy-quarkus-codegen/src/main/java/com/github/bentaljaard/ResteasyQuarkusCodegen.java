@@ -1,19 +1,9 @@
 package com.github.bentaljaard;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.apache.commons.lang3.BooleanUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.openapitools.codegen.CodegenModel;
-import org.openapitools.codegen.CodegenOperation;
-import org.openapitools.codegen.CodegenProperty;
 import org.openapitools.codegen.SupportingFile;
 import org.openapitools.codegen.languages.JavaResteasyServerCodegen;
 
-import io.swagger.v3.oas.models.Operation;
 import io.swagger.v3.oas.models.media.Schema;
 
 /**
